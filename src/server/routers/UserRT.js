@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userRouter = void 0;
+const express_1 = require("express");
+const UserBL_1 = require("../../logic/UserBL");
+exports.userRouter = (0, express_1.Router)();
+let userBL = new UserBL_1.UserBL();
+exports.userRouter.get('/', userBL.getUsers);
+exports.userRouter.get('/:id', userBL.getUser);
+exports.userRouter.post('/create', userBL.insertUser);
+exports.userRouter.put('/update/:id', userBL.updateUser);
+exports.userRouter.put('/remove/:id', userBL.deleteUser);
