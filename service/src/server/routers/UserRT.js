@@ -8,5 +8,5 @@ let userBL = new UserBL_1.UserBL();
 exports.userRouter.get('/', userBL.getUsers);
 exports.userRouter.get('/:id', userBL.getUser);
 exports.userRouter.post('/create', userBL.insertUser);
-exports.userRouter.put('/update/:id', userBL.updateUser);
-exports.userRouter.put('/remove/:id', userBL.deleteUser);
+exports.userRouter.patch('/update/:id', userBL.updateUser);
+exports.userRouter.delete('/remove/:id', userBL.deleteUser);

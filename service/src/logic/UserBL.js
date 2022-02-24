@@ -39,10 +39,11 @@ class UserBL {
         console.log(req.body);
         try {
             userDA.insertUser(userModel).then((rows) => {
+                console.log(rows);
                 res.status(200).json(rows);
             }).catch((err) => {
                 console.log(err);
-                res.status(400).send("Usuário não inserido");
+                res.status(404).send("Usuário não inserido");
             });
         }
         catch (error) {

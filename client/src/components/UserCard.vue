@@ -1,8 +1,17 @@
 <template>
 <div class="UserCard">
-  <h1>{{user.name}}</h1>
-  <p>{{user.email}}</p>
-  <router-link :to="{ name: 'User', params: { id: user.id }}">Perfil</router-link>
+  <div class="card" style="width:400px">
+    <div class="card-img-top" alt="Card image" style="width:100%">
+      <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" fill="currentColor" class="bi bi-file-person" viewBox="0 0 16 16">
+        <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+        <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">{{user.name}}</h4>
+      <p class="card-text">{{user.email}}</p>
+    </div>
+  </div>
 </div>
 </template>
 <script lang="ts">
@@ -17,6 +26,10 @@ import { Options, Vue } from 'vue-class-component';
   },
 })
 export default class UserCard extends Vue {
-  user!: string
+  user!: {
+    name: string;
+    email: string;
+    id: number;
+  };
 }
 </script>

@@ -16,13 +16,36 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/users',
     name: 'Users',
-    component: () => import('../views/UsersView.vue')
+    component: () => import('../views/UsersView.vue'),
   },
   {
     path: '/users/:id',
     name: 'User',
-    component: () => import('../views/UserView.vue')
+    component: () => import('../views/User/UserView.vue'),
+    children: [
+      {
+        path: '/users/:id/userHome',
+        name: 'User Home',
+        component: () => import('../views/User/UserHome.vue'),
+      },
+      {
+        path: '/users/:id/userFriends',
+        name: 'User Friends',
+        component: () => import('../views/User/UserFriends.vue'),
+      },
+      {
+        path: '/users/:id/userFamily',
+        name: 'User Family',
+        component: () => import('../views/User/UserFamily.vue'),
+      },
+      {
+        path: '/users/:id/userPhotos',
+        name: 'User Photos',
+        component: () => import('../views/User/UserPhotos.vue'),
+      },
+    ],
   },
+
 ];
 
 const router = createRouter({

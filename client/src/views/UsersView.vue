@@ -1,11 +1,20 @@
 <template>
-  <div class="Users">
+  <div id="UsersView">
     <h1>Users</h1>
-    <UserCard 
-    v-for="(user, index) in users"
-    v-bind:item="user"
-    v-bind:index="index"
-    v-bind:key="user" :user="user" />
+    <div class="Users" style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: flex-start;">
+      <div v-for="(user, index) in users"
+      v-bind:item="user"
+      v-bind:index="index"
+      v-bind:key="user" :user="user" style="padding: 20px;">
+      <UserCard :user="user" />
+      <router-link 
+      :to="{name:'User', params:{id:user.id}}">
+        <a class="btn btn-primary">Perfil</a>
+      </router-link>
+
+      </div>
+      
+    </div>
   </div>
 </template>
 
@@ -37,6 +46,9 @@ import UserService from '@/services/UserService';
 export default class UsersView extends Vue {}
 </script>
 
-<style>
-
+<style scoped>
+  #UsersView {
+    text-align: center;
+    padding: 40px;
+  }
 </style>

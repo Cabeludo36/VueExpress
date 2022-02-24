@@ -7,5 +7,5 @@ let userBL = new UserBL();
 userRouter.get('/', userBL.getUsers);
 userRouter.get('/:id', userBL.getUser);
 userRouter.post('/create', userBL.insertUser);
-userRouter.put('/update/:id', userBL.updateUser);
-userRouter.put('/remove/:id', userBL.deleteUser);
+userRouter.patch('/update/:id', userBL.updateUser);
+userRouter.delete('/remove/:id', userBL.deleteUser);
