@@ -4,7 +4,7 @@ Projeto para a faculdade 03/2022
 
 
 
-## Requisitos para rodar
+## Requisitos para rodar em desenvolvimento 
 
 Typescript
 
@@ -26,15 +26,27 @@ npm install -g @vue/cli
 
 ## Para rodar
 
-1. Abra o cmd ou bash na pasta `service`  e rode:
+1. Abra o cmd ou bash na pasta `service` e rode para instalar os pacotes:
 
-   ```shell
-   npm run start
+   ```bash
+   npm install
    ```
 
-2. Abra o cmd ou bash na pasta `client`  e rode:
+2. Abra o cmd ou bash na pasta `client` e rode para instalar os pacotes:
 
-   ```shell
+   ```bash
+   npm install
+   ```
+
+3. Abra o cmd ou bash na pasta `service` e rode para começar o serviço:
+
+   ```bash
+   npm run serve
+   ```
+
+4. Abra o cmd ou bash na pasta `client` e rode para começar o serviço:
+
+   ```bash
    npm run serve
    ```
 
