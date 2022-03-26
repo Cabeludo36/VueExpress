@@ -1,6 +1,9 @@
 <template>
   <div id="UsersView">
-    <h1>Users</h1>
+    <div class="row">
+      <h1 style="float: left;">Users</h1>
+      <router-link class="btn btn-primary" style="float: right;" :to="{name: 'Create User'}">Create User</router-link>
+    </div>
     <div class="Users" style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: flex-start;">
       <div v-for="(user, index) in users"
       v-bind:item="user"
