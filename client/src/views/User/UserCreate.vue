@@ -42,25 +42,19 @@
 </template>
 
 <script lang="ts">
-import UserService from "@/services/UserService";
-import { Options, Vue } from "vue-class-component";
+import { defineComponent } from "vue";
+import UserService, { User } from "@/services/UserService";
 
-@Options({
+export default defineComponent({
   data() {
     return {
-      user: {
-        name: "",
-        email: "",
-        password: ""
-      },
-      error: "",
-      text: ""
+      user: {} as User,
+      error: ""
     };
   },
   methods: {
     async createUser() {
       try {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         await UserService.createUser(this.user).then(() => {
           this.$router.push({ name: "Users" });
         });
@@ -70,9 +64,7 @@ import { Options, Vue } from "vue-class-component";
       }
     }
   }
-})
-
-export default class UserHome extends Vue {}
+});
 </script>
 
 <style scoped>

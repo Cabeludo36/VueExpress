@@ -4,7 +4,7 @@
     <hr />
     <h2>I Love Food</h2>
     <h5>
-      <span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27,
+      <span class="glyphicon glyphicon-time"></span> Post by {{user.name}}, Sep 27,
       2015.
     </h5>
     <h5>
@@ -117,17 +117,24 @@
   </div>
 </template>
 <script  lang="ts">
-import { Options, Vue } from "vue-class-component";
-@Options({
+import { defineComponent } from "vue";
+import UserService, { User } from '@/services/UserService';
+
+export default defineComponent({
+  data() {
+    return {
+      erro: '',
+      user: {} as User
+    }
+  },
   async created() {
     try {
+      this.user = await UserService.getUser(Number(this.$route.params.id));
       
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      this.error = err.messege;
+      this.erro = err.messege;
     }
   },
-})
-
-export default class UserHome extends Vue {}
+});
 </script>

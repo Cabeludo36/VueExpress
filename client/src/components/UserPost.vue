@@ -6,23 +6,23 @@
   </div>
 </template>
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { defineComponent } from 'vue';
 
-@Options({
+type Post = {
+  id: number;
+  title: string;
+  messege: string;
+  userName: string;
+  time: string;
+}
+
+export default defineComponent({
   props: {
     post: {
       type: Object,
       required: true,
     },
   },
+  post!: {} as Post,
 })
-export default class UserCard extends Vue {
-  post!: {
-    title: string;
-    time: string;
-    userName: string;
-    messege: string;
-    id: number;
-  };
-}
 </script>

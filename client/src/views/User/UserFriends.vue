@@ -2,8 +2,8 @@
     <h1>UserFriends</h1>
 </template>
 <script lang="ts">
-import { Vue } from 'vue-class-component'; 
+import { defineComponent } from 'vue'; 
 
 
-export default class HomeView extends Vue {}
+export default defineComponent({});
 </script>

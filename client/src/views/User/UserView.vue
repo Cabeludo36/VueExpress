@@ -3,7 +3,10 @@
     <div class="container-fluid">
       <div class="row content">
         <div class="col-sm-3 sidenav">
-          <h4>{{ user.name }}</h4>
+          <div class="card-body">
+            <h1 class="card-title">{{user.name}}</h1>
+            <p class="card-text">{{user.email}}</p>
+          </div>
           <ul class="nav nav-pills nav-stacked">
             <li :class="[$route.name === 'User Home' ? 'active' : '']">
               <router-link :to="{ name: 'User Home' }">Home</router-link>
@@ -28,47 +31,35 @@
             </span>
           </div>
         </div>
-
-        <router-view />
-        
+        <router-view  />
       </div>
     </div>
-
     <footer class="container-fluid">
       <p>Footer Text</p>
     </footer>
   </div>
 </template>
 <script  lang="ts">
-import { Options, Vue } from "vue-class-component";
-import UserCard from "@/components/UserCard.vue";
-import UserService from "@/services/UserService";
+import { defineComponent } from "vue";
+import UserService, { User } from "@/services/UserService";
 
-@Options({
+export default defineComponent({
   data() {
     return {
-      user: [],
-      error: "",
-      text: "",
+      user: {} as User,
+      error: ''
     };
-  },
-  components: {
-    UserCard,
   },
   async created() {
     try {
-      this.user = await UserService.getUser(this.$route.params.id);
+      this.user = await UserService.getUser(Number(this.$route.params.id));
       this.$router.push({ name: "User Home" });
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       this.error = err.messege;
     }
   },
-})
-
-
-
-export default class UserView extends Vue {}
+});
 </script>
 <style scoped>
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */

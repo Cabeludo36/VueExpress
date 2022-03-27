@@ -1,21 +1,26 @@
 <template>
   <div id="HomeView">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <br>
+    <input type="text" v-model="msg" style="width: 267px;">
+    <HelloWorld :msg="msg"/>
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent } from 'vue';
+import HelloWorld from '@/components/HelloWorld.vue';
 
-@Options({
+export default defineComponent({
+  data() {
+    return {
+      msg: 'Welcome to Your Vue.js + TypeScript App',
+    };
+  },
   components: {
     HelloWorld,
   },
-})
-
-export default class HomeView extends Vue {}
+});
 </script>
 <style scoped>
 #HomeView {

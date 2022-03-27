@@ -14,24 +14,21 @@
       :to="{name:'User', params:{id:user.id}}">
         <a class="btn btn-primary">Perfil</a>
       </router-link>
-
       </div>
-      
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { defineComponent } from 'vue';
 import UserCard from '@/components/UserCard.vue';
-import UserService from '@/services/UserService';
+import UserService, { User } from '@/services/UserService';
 
-@Options({
+export default defineComponent({
   data() {
     return {
-      users: [],
-      error: '',
-      text: ''
+      users: [] as User[],
+      error: ''
     };
   },
   components: {
@@ -45,8 +42,7 @@ import UserService from '@/services/UserService';
       this.error = err.messege;
     }
   }
-})
-export default class UsersView extends Vue {}
+});
 </script>
 
 <style scoped>

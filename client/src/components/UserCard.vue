@@ -15,21 +15,16 @@
 </div>
 </template>
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { User } from '@/services/UserService';
+import { defineComponent } from 'vue';
 
-@Options({
+export default defineComponent({
   props: {
     user: {
       type: Object,
       required: true,
     },
   },
+  user!: {} as User
 })
-export default class UserCard extends Vue {
-  user!: {
-    name: string;
-    email: string;
-    id: number;
-  };
-}
 </script>

@@ -1,7 +1,7 @@
 import axios from "axios";
 const url = "http://localhost:5000/api/v1/users";
 
-type User = {
+export type User = {
     id?: number;
     name: string;
     email: string;
@@ -10,7 +10,7 @@ type User = {
     updatedAt?: string;
 };
 export default class UserService {
-    static getUsers() {
+    static getUsers(): Promise<User[]> {
         // eslint-disable-next-line no-async-promise-executor
         return new Promise( async (resolve, reject) => {
             try {
@@ -30,7 +30,7 @@ export default class UserService {
         });
     }
 
-    static getUser(id: number) {
+    static getUser(id: number): Promise<User> {
         // eslint-disable-next-line no-async-promise-executor
         return new Promise( async (resolve, reject) => {
             try {
@@ -48,7 +48,7 @@ export default class UserService {
         });
     }
 
-    static createUser(user: User) {
+    static createUser(user: User): Promise<User> {
         // eslint-disable-next-line no-async-promise-executor
         return new Promise( async (resolve, reject) => {
             try {
