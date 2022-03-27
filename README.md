@@ -56,11 +56,11 @@ npm install -g @vue/cli
 
 - [x] Dar fetsh antes de começar a trabalhar no projeto.
 - [x] Ter comunicação com o time sobre oque esta alterando.
+- [x] Na pasta do `sevice` edite apenas os arquivos em `TS`
 - [x] Sempre seguir a organização da arquitetura utilizada no projeto (MVC).
 - [x] Dar fetsh antes de dar um commit no projeto.
 - [x] Dar fetsh antes de dar um merge no projeto.
 - [x] Dar fetsh antes de publicar o projeto.
-
 ------
 
 ## Para referencia
