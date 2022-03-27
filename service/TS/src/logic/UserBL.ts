@@ -3,6 +3,10 @@ import { Request, Response } from "express";
 import UserDA from "../database/UserDA";
 import UserModel from "../models/UserModel";
 
+type UserLogin = {
+    email: string;
+    password: string;
+}
 export class UserBL {
     public getUser(req: Request, res: Response): UserModel | any {
         let userDA = new UserDA();
@@ -69,6 +73,24 @@ export class UserBL {
         try {
             userDA.deleteUser(Number(req.params.id)).then(() => {
                 res.status(200).send("Usuário deletado");
+            }).catch(() => {
+                res.status(404).send("Usuário não encontrado");
+            });
+        } catch (error) {
+            res.status(400).send("Id inválido");
+        }
+        
+    }
+
+    public getUserLogin(req: Request, res: Response): UserModel | any {
+        let userDA = new UserDA();
+        let userLogin = req.body as UserLogin;
+        try {
+            userDA.getUserLogin(userLogin.email, userLogin.password).then((user) => {
+                if(user != null) 
+                    res.status(200).send(user);
+                else
+                    res.status(404).send("Usuário não encontrado");
             }).catch(() => {
                 res.status(404).send("Usuário não encontrado");
             });

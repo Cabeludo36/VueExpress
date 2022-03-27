@@ -5,6 +5,15 @@ class UserDA {
     /**
      * @returns Promise<{UserModel}>
      * @memberof UserDA
+     * @description Busca um usuário pelo email e senha para login
+    */
+    async getUserLogin(email, password) {
+        let query = 'SELECT * FROM users WHERE email = ? AND password = ?;';
+        return await (0, Connection_1.dbQueryFirst)(query, [email, password]);
+    }
+    /**
+     * @returns Promise<{UserModel}>
+     * @memberof UserDA
      * @description Busca um usuário pelo id
      * @example
      * await userDA.getUser(1);

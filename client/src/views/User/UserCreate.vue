@@ -56,7 +56,7 @@ export default defineComponent({
     async createUser() {
       try {
         await UserService.createUser(this.user).then(() => {
-          this.$router.push({ name: "Users" });
+          this.$router.push({ name: "Login User" });
         });
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (err:any) {

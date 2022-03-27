@@ -12,4 +12,4 @@ const app = (0, express_1.default)();
 app.use(body_parser_1.default.json());
 (0, Router_1.useRoutes)(app);
 (0, Connection_1.createDataBase)();
-app.listen(PORT, () => console.log('Rodando em http://localhost:' + PORT + '/api/v1/users'));
+app.listen(PORT, () => console.log('Rodando em http://localhost:' + PORT + '/api/v1/users/getUsers'));

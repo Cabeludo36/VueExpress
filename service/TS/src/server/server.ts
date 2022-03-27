@@ -13,4 +13,4 @@ useRoutes(app);
 
 createDataBase();
 
-app.listen(PORT, () => console.log('Rodando em http://localhost:'+PORT+'/api/v1/users'));
+app.listen(PORT, () => console.log('Rodando em http://localhost:'+PORT+'/api/v1/users/getUsers'));

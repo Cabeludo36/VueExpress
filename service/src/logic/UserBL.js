@@ -76,5 +76,22 @@ class UserBL {
             res.status(400).send("Id inválido");
         }
     }
+    getUserLogin(req, res) {
+        let userDA = new UserDA_1.default();
+        let userLogin = req.body;
+        try {
+            userDA.getUserLogin(userLogin.email, userLogin.password).then((user) => {
+                if (user != null)
+                    res.status(200).send(user);
+                else
+                    res.status(404).send("Usuário não encontrado");
+            }).catch(() => {
+                res.status(404).send("Usuário não encontrado");
+            });
+        }
+        catch (error) {
+            res.status(400).send("Id inválido");
+        }
+    }
 }
 exports.UserBL = UserBL;

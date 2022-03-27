@@ -2,6 +2,17 @@ import UserModel from "../models/UserModel";
 import { dbQuery, dbQueryFirst } from "./connection/Connection";
 
 export default class UserDA {
+    
+    /**
+     * @returns Promise<{UserModel}>
+     * @memberof UserDA
+     * @description Busca um usuário pelo email e senha para login
+    */
+     public async getUserLogin(email: string, password: string): Promise<UserModel> {
+        let query = 'SELECT * FROM users WHERE email = ? AND password = ?;';
+        return await dbQueryFirst(query, [email, password]);
+    }
+    
     /**
      * @returns Promise<{UserModel}>
      * @memberof UserDA
