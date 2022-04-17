@@ -1,6 +1,6 @@
 import { Application, Router } from "express";
 import { userRouter } from "./UserRT";
-const cors = require('cors')
+import cors from "cors";
 
 const corsOptions = {
     origin: '*',
@@ -10,6 +10,7 @@ const corsOptions = {
 
 export const useRoutes = (app: Application) => {
     const apiRouter: Router = Router();
+    apiRouter.use(cors(corsOptions))
     apiRouter.use('/users', userRouter);
 
     app.use('/api/v1', cors(), apiRouter);
