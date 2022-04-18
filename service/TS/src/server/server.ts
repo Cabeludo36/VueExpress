@@ -15,8 +15,8 @@ let server = app.listen(PORT, () => console.log('Rodando em http://localhost:'+P
 
 const io:Socket = require('socket.io')(server, {
         cors: {
-        origins: ['http://localhost:8080/'],
-        methods: ["GET", "POST"]
+            origins: ['http://localhost:8080/'],
+            methods: ["GET", "POST"]
         }
 });
 

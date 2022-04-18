@@ -2,7 +2,8 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/users">Users</router-link>
+    <router-link to="/users">Users</router-link> | 
+    <router-link to="/doc/1">Documents</router-link>
     <div v-if="!temUser()" style="float: right;">
       <router-link :to="{name: 'Create User'}">Logon</router-link> |
       <router-link :to="{name: 'Login User'}">Login</router-link>
