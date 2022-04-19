@@ -41,7 +41,7 @@ npm install -g @vue/cli
 3. Abra o cmd ou bash na pasta `service` e rode para começar o serviço:
 
    ```bash
-   npm run serve
+   npm run start
    ```
 
 4. Abra o cmd ou bash na pasta `client` e rode para começar o serviço:
