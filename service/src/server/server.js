@@ -23,6 +23,10 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log(`Usuario ${socket.id} desconectado`);
     });
+    socket.on('mandarTexto', (data) => {
+        console.log(data);
+        socket.broadcast.emit('mandarTextoServer', data);
+    });
     socket.on('ping', (n) => {
         console.log(`Usuario ${socket.id} pingou ${n}`);
     });
