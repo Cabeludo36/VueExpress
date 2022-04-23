@@ -1,5 +1,10 @@
 import axios from "axios";
-const url = "http://localhost:5000/api/v1/users";
+let url: string;
+if(window.location.hostname != 'localhost'){
+    url = 'http://'+ window.location.hostname +':5000/api/v1/users/'
+} else {
+    url = 'http://localhost:5000/api/v1/users/'
+}
 
 export type User = {
     id?: number;

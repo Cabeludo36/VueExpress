@@ -25,13 +25,12 @@ export default defineComponent({
     },
     methods: {
         mandarBrodcast() {
-            this.socket.emit('mandarTexto', this.texto)
-            console.log(this.texto);
+            this.socket.emit('mandarTexto', this.texto);
             this.$forceUpdate();
         },
         getRealtimeData() {
             this.socket.on('mandarTextoServer', (data:string) => {
-                this.texto = data
+                this.texto = data;
                 this.$forceUpdate();
             });
         },
