@@ -13,6 +13,7 @@ const app = (0, express_1.default)();
 app.use(body_parser_1.default.json());
 (0, Router_1.useRoutes)(app);
 let server = app.listen(PORT, () => console.log('Rodando em: \nLocalhost: http://localhost:' + PORT + '/api/v1/users/getUsers\nNetwork: http://' + util_1.results['wlp0s20f3'] + ':' + PORT + '/api/v1/users/getUsers'));
+// socket connections para realtime services em docs
 const io = require('socket.io')(server, {
     cors: {
         origins: ['http://localhost:8080/', 'http://' + util_1.results['wlp0s20f3'] + ':8080/'],
@@ -25,10 +26,6 @@ io.on('connection', (socket) => {
         console.log(`Usuario ${socket.id} desconectado`);
     });
     socket.on('mandarTexto', (data) => {
-        console.log(data);
         socket.broadcast.emit('mandarTextoServer', data);
-    });
-    socket.on('ping', (n) => {
-        console.log(`Usuario ${socket.id} pingou ${n}`);
     });
 });

@@ -24,6 +24,18 @@ async function createDataBase() {
             updated_at DATETIME NULL,
             deleted_at DATETIME NULL
         );`);
+        db.run(`CREATE TABLE IF NOT EXISTS documents (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            description TEXT NOT NULL,
+            texto TEXT NOT NULL,
+
+            user_id INTEGER NOT NULL,
+            active BOOLEAN NOT NULL,
+            created_at DATETIME NOT NULL,
+            updated_at DATETIME NULL,
+            deleted_at DATETIME NULL
+        )`);
     });
     db.close();
 }
