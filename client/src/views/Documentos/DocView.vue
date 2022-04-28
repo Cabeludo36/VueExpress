@@ -34,7 +34,11 @@ export default defineComponent({
                 this.texto = data;
                 this.$forceUpdate();
             });
-        }
+            this.socket.on('novoUserRoom', () => {
+                this.mandarBrodcast();
+            })
+        },
+        
     },
     updated() {
         this.id = state.state.socket.id;

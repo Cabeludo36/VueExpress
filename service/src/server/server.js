@@ -25,12 +25,13 @@ io.on('connection', (socket) => {
     let geralDocID;
     socket.on('entrarRoom', (docID) => {
         socket.join(docID);
+        socket.broadcast.to(docID).emit('novoUserRoom');
         geralDocID = docID;
     });
     socket.on('disconnect', () => {
         console.log(`Usuario ${socket.id} desconectado`);
     });
-    socket.on('mandarTexto', (data) => {
-        socket.broadcast.to(geralDocID).emit('mandarTextoServer', data);
+    socket.on('mandarTexto', (texto) => {
+        socket.broadcast.to(geralDocID).emit('mandarTextoServer', texto);
     });
 });
