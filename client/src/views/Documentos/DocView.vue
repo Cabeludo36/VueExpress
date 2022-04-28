@@ -2,7 +2,7 @@
     teste {{id}}
     <button @click="teste">teste</button>
     <textarea @input="mandarBrodcast" v-model="texto" name="teste" id="breno" cols="30" rows="10"></textarea>
-    <h1>ola</h1>
+    <h1>oi</h1>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
