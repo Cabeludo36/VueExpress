@@ -25,14 +25,18 @@ const io:Socket = require('socket.io')(server, {
 
 io.on('connection', (socket:Socket) => {
     console.log(`Usuario ${socket.id} conectado`);
-
+    let geralDocID: string;
+    socket.on('entrarRoom', (docID:string) => {
+        socket.join(docID);
+        
+        geralDocID = docID;
+    });
 
     socket.on('disconnect', () => {
         console.log(`Usuario ${socket.id} desconectado`);
-        
     });
 
     socket.on('mandarTexto', (data:any) => {
-        socket.broadcast.emit('mandarTextoServer', data);
+        socket.broadcast.to(geralDocID).emit('mandarTextoServer', data);
     });
 });

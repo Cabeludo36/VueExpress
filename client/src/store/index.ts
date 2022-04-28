@@ -16,9 +16,9 @@ export default createStore({
         if(window.location.hostname != 'localhost'){
           this.state.socket = io('http://'+ window.location.hostname +':5000') as Socket
         } else {
-          this.state.socket = io('http://localhost:5000') as Socket
+          this.state.socket = io('http://localhost:5000') as Socket;
         }
-    },
+      },
     desconectaSocket() {
       this.state.socket.disconnect()
     }

@@ -21,6 +21,7 @@ export default defineComponent({
         state.dispatch('criaSocket');
         this.id = state.state.socket.id;
         this.socket = state.state.socket;
+        this.socket.emit('entrarRoom', this.$route.params.id)
         this.getRealtimeData();
     },
     methods: {
@@ -33,7 +34,7 @@ export default defineComponent({
                 this.texto = data;
                 this.$forceUpdate();
             });
-        },
+        }
     },
     updated() {
         this.id = state.state.socket.id;

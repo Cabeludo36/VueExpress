@@ -22,10 +22,15 @@ const io = require('socket.io')(server, {
 });
 io.on('connection', (socket) => {
     console.log(`Usuario ${socket.id} conectado`);
+    let geralDocID;
+    socket.on('entrarRoom', (docID) => {
+        socket.join(docID);
+        geralDocID = docID;
+    });
     socket.on('disconnect', () => {
         console.log(`Usuario ${socket.id} desconectado`);
     });
     socket.on('mandarTexto', (data) => {
-        socket.broadcast.emit('mandarTextoServer', data);
+        socket.broadcast.to(geralDocID).emit('mandarTextoServer', data);
     });
 });
