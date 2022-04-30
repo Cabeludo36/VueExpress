@@ -18,7 +18,22 @@ export default class DocDA {
     }
 
     public static async getByName(name: string): Promise<DocModel[] | any> {
-        let query = `SELECT * FROM documents WHERE name = ?`;
+        let query = `SELECT * FROM documents WHERE name LIKE %?%`;
         return await dbQuery(query, [name]);
+    }
+
+    public static async create(doc: DocModel): Promise<DocModel | any> {
+        let query = `INSERT INTO documents (name, description, texto, user_id, active, created_at) VALUES (?, ?, ?, ?, ?, ?)`;
+        return await dbQueryFirst(query, [doc.name, doc.description, doc.texto, doc.user_id, doc.active, doc.created_at]);    
+    }
+
+    public static async update(doc: DocModel): Promise<DocModel | any> {
+        let query = `UPDATE documents SET name = ?, user_id = ? WHERE id = ?`;
+        return await dbQueryFirst(query, [doc.name, doc.user_id, doc.id]);
+    }
+
+    public static async delete(id: number): Promise<DocModel | any> {
+        let query = `DELETE FROM documents WHERE id = ?`;
+        return await dbQueryFirst(query, [id]);
     }
 }

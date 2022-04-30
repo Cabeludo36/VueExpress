@@ -8,6 +8,7 @@
 import { defineComponent } from 'vue'
 import { Socket } from 'socket.io-client'
 import state from '@/store/index'
+import DocService, { Documento } from "@/services/DocService";
 
 export default defineComponent({
     data() {
@@ -21,6 +22,7 @@ export default defineComponent({
         state.dispatch('criaSocket');
         this.id = state.state.socket.id;
         this.socket = state.state.socket;
+
         this.socket.emit('entrarRoom', this.$route.params.id)
         this.getRealtimeData();
     },
@@ -36,7 +38,16 @@ export default defineComponent({
             });
             this.socket.on('novoUserRoom', () => {
                 this.mandarBrodcast();
-            })
+            });
+
+            this.socket.on('primeiraEntrada', (valor:boolean) => {
+                if (valor) {
+                    DocService.getDoc(Number(this.$route.params.id)).then((doc:Documento) => {
+                        this.texto = doc.texto;
+                        this.$forceUpdate();
+                    });
+                }
+            });
         },
         
     },
