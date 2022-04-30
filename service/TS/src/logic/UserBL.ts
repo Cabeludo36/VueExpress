@@ -86,15 +86,20 @@ export class UserBL {
         let userDA = new UserDA();
         let userLogin = req.body as UserLogin;
         try {
-            userDA.getUserLogin(userLogin.email, userLogin.password).then((user) => {
-                if(user != null) 
-                    res.status(200).send(user);
+            userDA.getUserLogin(userLogin.email, userLogin.password).then((user:UserModel) => {
+                if(user != null){
+                    console.log(user);
+                    res.status(200).json(user);
+                }
                 else
                     res.status(404).send("Usuário não encontrado");
-            }).catch(() => {
+            }).catch((err) => {
+                console.log(err);
                 res.status(404).send("Usuário não encontrado");
             });
         } catch (error) {
+            console.log(error);
+            
             res.status(400).send("Id inválido");
         }
         

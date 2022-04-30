@@ -39,6 +39,7 @@ class DocBL {
             });
         }
         catch (error) {
+            res.status(400).send("Id inválido");
         }
     }
     static async getByName(req, res) {
@@ -54,9 +55,11 @@ class DocBL {
         }
     }
     static async create(req, res) {
-        let doc = req.body;
+        const doc = req.body;
+        console.table(req.body);
+        //console.table(doc);
         try {
-            DocDA_1.default.create(doc).then((doc) => {
+            DocDA_1.default.create(req.body.titulo, req.body.descricao, req.body.user_id).then((doc) => {
                 res.status(200).json(doc);
             }).catch(() => {
                 res.status(404).send("Documento não foi possível criar");

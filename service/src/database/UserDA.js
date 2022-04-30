@@ -9,7 +9,8 @@ class UserDA {
     */
     async getUserLogin(email, password) {
         let query = 'SELECT * FROM users WHERE email = ? AND password = ?;';
-        return await (0, Connection_1.dbQueryFirst)(query, [email, password]);
+        const resolt = await (0, Connection_1.dbQueryFirst)(query, [email, password]);
+        return resolt;
     }
     /**
      * @returns Promise<{UserModel}>

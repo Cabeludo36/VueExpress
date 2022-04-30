@@ -18,9 +18,24 @@ class DocDA {
         let query = `SELECT * FROM documents WHERE name LIKE %?%`;
         return await (0, Connection_1.dbQuery)(query, [name]);
     }
-    static async create(doc) {
+    static async create(title, description, user_id) {
         let query = `INSERT INTO documents (name, description, texto, user_id, active, created_at) VALUES (?, ?, ?, ?, ?, ?)`;
-        return await (0, Connection_1.dbQueryFirst)(query, [doc.name, doc.description, doc.texto, doc.user_id, doc.active, doc.created_at]);
+        let params = [
+            title,
+            description,
+            '',
+            user_id,
+            true,
+            new Date()
+        ];
+        console.table(params);
+        try {
+            await (0, Connection_1.dbQueryFirst)(query, params);
+        }
+        catch (error) {
+            console.log(error);
+        }
+        return await (0, Connection_1.dbQueryFirst)(`SELECT * FROM documents WHERE id = (SELECT MAX(id) FROM documents)`);
     }
     static async update(doc) {
         let query = `UPDATE documents SET name = ?, user_id = ? WHERE id = ?`;

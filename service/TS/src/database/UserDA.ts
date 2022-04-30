@@ -10,7 +10,8 @@ export default class UserDA {
     */
      public async getUserLogin(email: string, password: string): Promise<UserModel> {
         let query = 'SELECT * FROM users WHERE email = ? AND password = ?;';
-        return await dbQueryFirst(query, [email, password]);
+        const resolt = await dbQueryFirst(query, [email, password]);
+        return resolt;
     }
     
     /**

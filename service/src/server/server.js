@@ -7,6 +7,10 @@ const express_1 = __importDefault(require("express"));
 const Router_1 = require("./routers/Router");
 const body_parser_1 = __importDefault(require("body-parser"));
 const util_1 = require("../util/util");
+/* import { createDataBase } from '../database/connection/Connection';
+import DocDA from '../database/DocDA';
+import DocModel from '../models/DocModel';
+import DocBL from '../logic/DocBL'; */
 let defaultTeste = '/api/v1/docs/getDocs';
 const PORT = process.env.PORT || 5000;
 const app = (0, express_1.default)();

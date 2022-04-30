@@ -25,8 +25,14 @@ export default class UserService {
         return new Promise( async (resolve, reject) => {
             try {
                 const res = await axios.post(url + "/login", { email, password });
+                const data = res.data;
                 if(res.status === 200)
-                    resolve(res.data);
+                    resolve({
+                        ...data,
+                        id: data.id,
+                        nome: data.name,
+                        email: data.email
+                    });
                 else
                     reject(res.data);
             // eslint-disable-next-line @typescript-eslint/no-explicit-any

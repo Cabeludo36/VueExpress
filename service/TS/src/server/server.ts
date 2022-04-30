@@ -3,10 +3,10 @@ import { useRoutes } from './routers/Router';
 import bodyParser from 'body-parser';
 import { Socket } from 'socket.io';
 import { results } from '../util/util';
-import { createDataBase } from '../database/connection/Connection';
+/* import { createDataBase } from '../database/connection/Connection';
 import DocDA from '../database/DocDA';
 import DocModel from '../models/DocModel';
-import DocBL from '../logic/DocBL';
+import DocBL from '../logic/DocBL'; */
 
 let defaultTeste = '/api/v1/docs/getDocs';
 const PORT = process.env.PORT || 5000;

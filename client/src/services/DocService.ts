@@ -54,4 +54,20 @@ export default class DocService {
             }
         });
     }
+
+    static create(titulo: string, descricao:string, user_id:number): Promise<Documento> {
+        // eslint-disable-next-line no-async-promise-executor
+        return new Promise( async (resolve, reject) => {
+            try {
+                const res = await axios.post(url+'/create', { titulo, descricao, user_id });
+                const data = res.data;
+                    resolve({
+                        ...data,
+                        id: data.id
+                    });
+            } catch (err) {
+                reject(err);
+            }
+        });
+    }
 }

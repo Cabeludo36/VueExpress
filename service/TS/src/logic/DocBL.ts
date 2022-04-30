@@ -2,6 +2,11 @@ import { Request, Response } from "express";
 import DocDA from "../database/DocDA";
 import DocModel from "../models/DocModel";
 
+type DocCreate = {
+    name: string;
+    description: string;
+    user_id: number;
+}
 export default class DocBL {
     public static async getAll(req:Request, res:Response): Promise<DocModel[] | any> {
         try {
@@ -36,7 +41,7 @@ export default class DocBL {
                 res.status(404).send("Documentos não encontrados");
             });
         } catch (error) {
-            
+            res.status(400).send("Id inválido");
         }
     }
 
@@ -53,9 +58,11 @@ export default class DocBL {
     }
 
     public static async create(req:Request, res:Response): Promise<DocModel | any> {
-        let doc = req.body as DocModel;
+        const doc = req.body as DocCreate;
+        console.table(req.body);
+        //console.table(doc);
         try {
-            DocDA.create(doc).then((doc) => {
+            DocDA.create(req.body.titulo, req.body.descricao, req.body.user_id).then((doc) => {
                 res.status(200).json(doc);
             }).catch(() => {
                 res.status(404).send("Documento não foi possível criar");

@@ -1,14 +1,18 @@
 <template>
-  <h1>Documentos</h1>
-  <div
-    v-for="(doc, index) in documentos"
-    v-bind:item="doc"
-    v-bind:index="index"
-    v-bind:key="doc"
-    :doc="doc"
-    style="padding: 20px"
-  >
-    <DocCard :doc="doc" />
+  <div id="DocsView">
+    <div>
+      <h1 style="float: left;">Documentos</h1>
+      <router-link class="btn btn-primary" style="float: right;" to="/doc/create">Novo Documento</router-link>
+    </div>
+    <div v-for="(doc, index) in documentos"
+      v-bind:item="doc"
+      v-bind:index="index"
+      v-bind:key="doc.id"
+      :doc="doc"
+      style="padding: 20px"
+    >
+      <DocCard :doc="doc" />
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -37,8 +41,8 @@ export default defineComponent({
     DocCard,
   },
   beforeRouteEnter(to, from, next) {
-    if (userStore.state.uname != "" && userStore.state.uname != null)
-      router.replace("/doc");
+    if (userStore.state.user.name === "" || userStore.state.user.name == null)
+      router.push("/users/login");
     next();
   },
 });

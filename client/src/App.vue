@@ -28,7 +28,7 @@ export default defineComponent({
   },
   methods: {
     temUser() {
-      if (userStore.state.uname != '' && userStore.state.uname != null)
+      if (userStore.state.user.name != '' && userStore.state.user.name != null)
         return true;
       // eslint-disable-next-line no-unreachable
       return false;

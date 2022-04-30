@@ -22,9 +22,26 @@ export default class DocDA {
         return await dbQuery(query, [name]);
     }
 
-    public static async create(doc: DocModel): Promise<DocModel | any> {
+    public static async create(title:string, description:string, user_id:number): Promise<DocModel | any> {
         let query = `INSERT INTO documents (name, description, texto, user_id, active, created_at) VALUES (?, ?, ?, ?, ?, ?)`;
-        return await dbQueryFirst(query, [doc.name, doc.description, doc.texto, doc.user_id, doc.active, doc.created_at]);    
+        let params = [
+            title,
+            description,
+            '',
+            user_id,
+            true,
+            new Date()
+        ];
+        console.table(params);
+        try {
+            await dbQueryFirst(query, params);
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+
+        return await dbQueryFirst(`SELECT * FROM documents WHERE id = (SELECT MAX(id) FROM documents)`);
     }
 
     public static async update(doc: DocModel): Promise<DocModel | any> {
