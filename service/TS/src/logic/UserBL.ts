@@ -27,7 +27,6 @@ export class UserBL {
             userDA.getUsers().then((rows) => {
                 res.status(200).json(rows);
             }).catch((err) => {
-                console.log(err);
                 res.status(404).send("Usuários não encontrados");
             });
         } catch (error) {
@@ -42,10 +41,8 @@ export class UserBL {
         console.log(req.body);
         try {
             userDA.insertUser(userModel).then((rows) => {
-                console.log(rows);
                 res.status(200).json(rows);
             }).catch((err) => {
-                console.log(err);
                 res.status(404).send("Usuário não inserido");
             });
         } catch (error) {
@@ -88,18 +85,14 @@ export class UserBL {
         try {
             userDA.getUserLogin(userLogin.email, userLogin.password).then((user:UserModel) => {
                 if(user != null){
-                    console.log(user);
                     res.status(200).json(user);
                 }
                 else
                     res.status(404).send("Usuário não encontrado");
             }).catch((err) => {
-                console.log(err);
                 res.status(404).send("Usuário não encontrado");
             });
         } catch (error) {
-            console.log(error);
-            
             res.status(400).send("Id inválido");
         }
         

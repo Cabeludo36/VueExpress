@@ -12,5 +12,5 @@ exports.docRouter.get('/getDoc/:id', DocBL_1.default.getById);
 exports.docRouter.get('/getDocsByUser/:user_id', DocBL_1.default.getByUserId);
 exports.docRouter.get('/getDocsByName/:name', DocBL_1.default.getByName);
 exports.docRouter.post('/create', DocBL_1.default.create);
-exports.docRouter.patch('/update/:id', DocBL_1.default.update);
+exports.docRouter.patch('/update', DocBL_1.default.update);
 exports.docRouter.delete('/remove/:id', DocBL_1.default.delete);

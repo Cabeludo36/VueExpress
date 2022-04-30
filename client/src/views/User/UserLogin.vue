@@ -39,7 +39,7 @@ import { userStore } from "@/store/userStore";
 export default defineComponent({
   data() {
     return {
-      user: {} as UserAuth,
+      user: {email: 'GabsGabs@gamil.com', password: 'BrenoLindo'} as UserAuth,
       error: ""
     };
   },

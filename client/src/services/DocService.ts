@@ -70,4 +70,15 @@ export default class DocService {
             }
         });
     }
+
+    static update(documento:Documento): Promise<Documento> {
+        // eslint-disable-next-line no-async-promise-executor
+        return new Promise( async (resolve, reject) => {
+            try {
+                resolve(axios.patch(url+'update', {documento}));
+            } catch (err) {
+                reject(err);
+            }
+        });
+    }
 }

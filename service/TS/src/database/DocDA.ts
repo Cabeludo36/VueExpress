@@ -33,20 +33,15 @@ export default class DocDA {
             new Date()
         ];
         console.table(params);
-        try {
-            await dbQueryFirst(query, params);
-            
-        } catch (error) {
-            console.log(error);
-            
-        }
+        
+        await dbQueryFirst(query, params);
 
         return await dbQueryFirst(`SELECT * FROM documents WHERE id = (SELECT MAX(id) FROM documents)`);
     }
 
     public static async update(doc: DocModel): Promise<DocModel | any> {
-        let query = `UPDATE documents SET name = ?, user_id = ? WHERE id = ?`;
-        return await dbQueryFirst(query, [doc.name, doc.user_id, doc.id]);
+        let query = `UPDATE documents SET name = ?, texto = ? WHERE id = ?`;
+        return await dbQueryFirst(query, [doc.texto, doc.id]);
     }
 
     public static async delete(id: number): Promise<DocModel | any> {

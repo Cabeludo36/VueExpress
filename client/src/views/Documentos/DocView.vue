@@ -1,6 +1,6 @@
 <template>
     teste {{id}}
-    <textarea @input="mandarBrodcast" v-model="texto" name="teste" id="breno" cols="30" rows="10"></textarea>
+    <textarea @input="mandarBrodcast" v-model="documento.texto" name="teste" id="breno" cols="30" rows="10"></textarea>
     <h1>oi</h1>
 </template>
 <script lang="ts">
@@ -16,7 +16,7 @@ export default defineComponent({
         return {
             socket: state.state.socket as Socket,
             id: state.state.socket.id as string,
-            texto: ''
+            documento: {} as Documento,
         }
     },
     created() {
@@ -29,12 +29,12 @@ export default defineComponent({
     },
     methods: {
         mandarBrodcast() {
-            this.socket.emit('mandarTexto', this.texto);
+            this.socket.emit('mandarTexto', this.documento.texto);
             this.$forceUpdate();
         },
         getRealtimeData() {
             this.socket.on('mandarTextoServer', (data:string) => {
-                this.texto = data;
+                this.documento.texto = data;
                 this.$forceUpdate();
             });
             this.socket.on('novoUserRoom', () => {
@@ -44,13 +44,12 @@ export default defineComponent({
             this.socket.on('primeiraEntrada', (valor:boolean) => {
                 if (valor) {
                     DocService.getDoc(Number(this.$route.params.id)).then((doc:Documento) => {
-                        this.texto = doc.texto;
+                        this.documento = doc;
                         this.$forceUpdate();
                     });
                 }
             });
         },
-        
     },
     updated() {
         this.id = state.state.socket.id;
@@ -60,9 +59,15 @@ export default defineComponent({
     if (userStore.state.user.name == "" || userStore.state.user.name == null)
       router.push("/users/login");
     next();
-  },
+    },
     beforeRouteLeave(to, from, next) {
-        state.dispatch('desconectaSocket')
+        this.socket.emit('sairRoom', this.$route.params.id);
+        this.socket.on('ultimaSaida', (value:boolean) => {
+            if (value) {
+                DocService.update(this.documento)
+            }
+            state.dispatch('desconectaSocket');
+        });
         next()
     },
 })

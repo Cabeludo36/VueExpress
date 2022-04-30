@@ -2,18 +2,12 @@ import { Request, Response } from "express";
 import DocDA from "../database/DocDA";
 import DocModel from "../models/DocModel";
 
-type DocCreate = {
-    name: string;
-    description: string;
-    user_id: number;
-}
 export default class DocBL {
     public static async getAll(req:Request, res:Response): Promise<DocModel[] | any> {
         try {
             DocDA.getAll().then((rows) => {
                 res.status(200).json(rows);
             }).catch((err) => {
-                console.log(err);
                 res.status(404).send("Usuários não encontrados");
             });
         } catch (error) {
@@ -58,9 +52,6 @@ export default class DocBL {
     }
 
     public static async create(req:Request, res:Response): Promise<DocModel | any> {
-        const doc = req.body as DocCreate;
-        console.table(req.body);
-        //console.table(doc);
         try {
             DocDA.create(req.body.titulo, req.body.descricao, req.body.user_id).then((doc) => {
                 res.status(200).json(doc);
@@ -74,7 +65,7 @@ export default class DocBL {
 
     public static async update(req:Request, res:Response): Promise<DocModel | any> {
         try {
-            DocDA.update(req.body as DocModel).then((doc) => {
+            DocDA.update(req.body.documento as DocModel).then((doc) => {
                 res.status(200).send("Documento atualizado");
             }).catch(() => {
                 res.status(404).send("Documento não encontrado");

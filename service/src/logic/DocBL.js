@@ -10,7 +10,6 @@ class DocBL {
             DocDA_1.default.getAll().then((rows) => {
                 res.status(200).json(rows);
             }).catch((err) => {
-                console.log(err);
                 res.status(404).send("Usuários não encontrados");
             });
         }
@@ -55,9 +54,6 @@ class DocBL {
         }
     }
     static async create(req, res) {
-        const doc = req.body;
-        console.table(req.body);
-        //console.table(doc);
         try {
             DocDA_1.default.create(req.body.titulo, req.body.descricao, req.body.user_id).then((doc) => {
                 res.status(200).json(doc);
@@ -71,7 +67,7 @@ class DocBL {
     }
     static async update(req, res) {
         try {
-            DocDA_1.default.update(req.body).then((doc) => {
+            DocDA_1.default.update(req.body.documento).then((doc) => {
                 res.status(200).send("Documento atualizado");
             }).catch(() => {
                 res.status(404).send("Documento não encontrado");

@@ -32,8 +32,6 @@ export const userStore = createStore({
 
       try {
         const res = await UserService.login(user.email, user.password);
-        console.log(res);
-        
         if(res.id != null) {
           this.state.user = res;
           router.push('/');

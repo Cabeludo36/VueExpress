@@ -8,5 +8,5 @@ docRouter.get('/getDoc/:id', DocBL.getById);
 docRouter.get('/getDocsByUser/:user_id', DocBL.getByUserId);
 docRouter.get('/getDocsByName/:name', DocBL.getByName);
 docRouter.post('/create', DocBL.create);
-docRouter.patch('/update/:id', DocBL.update);
+docRouter.patch('/update', DocBL.update);
 docRouter.delete('/remove/:id', DocBL.delete);
