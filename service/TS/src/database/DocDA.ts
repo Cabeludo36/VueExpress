@@ -40,7 +40,7 @@ export default class DocDA {
     }
 
     public static async update(doc: DocModel): Promise<DocModel | any> {
-        let query = `UPDATE documents SET name = ?, texto = ? WHERE id = ?`;
+        let query = `UPDATE documents SET texto = ? WHERE id = ?`;
         return await dbQueryFirst(query, [doc.texto, doc.id]);
     }
 

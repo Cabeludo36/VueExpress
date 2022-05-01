@@ -33,7 +33,7 @@ class DocDA {
         return await (0, Connection_1.dbQueryFirst)(`SELECT * FROM documents WHERE id = (SELECT MAX(id) FROM documents)`);
     }
     static async update(doc) {
-        let query = `UPDATE documents SET name = ?, texto = ? WHERE id = ?`;
+        let query = `UPDATE documents SET texto = ? WHERE id = ?`;
         return await (0, Connection_1.dbQueryFirst)(query, [doc.texto, doc.id]);
     }
     static async delete(id) {
