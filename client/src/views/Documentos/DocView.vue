@@ -1,5 +1,5 @@
 <template>
-    teste {{id}}
+    <h1>{{documento.name}}</h1>
     <textarea @input="mandarBrodcast" v-model="documento.texto" name="teste" id="breno" cols="30" rows="10"></textarea>
     <h1>oi</h1>
 </template>
