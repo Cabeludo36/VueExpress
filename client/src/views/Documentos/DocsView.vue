@@ -1,5 +1,5 @@
 <template>
-  <div id="DocsView">
+  <div id="DocsView" style="padding: 40px;">
     <div class="row">
       <h1 style="float: left;">Documentos</h1>
       <router-link class="btn btn-primary" style="float: right;" to="/doc/create">Novo Documento</router-link>
