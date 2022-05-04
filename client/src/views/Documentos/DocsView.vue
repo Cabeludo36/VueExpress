@@ -1,16 +1,15 @@
 <template>
   <div id="DocsView">
-    <div>
-      <h1 style="float: left;">Documentos</h1>
-      <router-link class="btn btn-primary" style="float: right;" to="/doc/create">Novo Documento</router-link>
+    <div class="row">
+      <h1 style="float: left;"> Documentos</h1>
+      <router-link class="btn btn-primary" style="float: right;" to="/doc/create">New Document</router-link>
     </div>
-    <div v-for="(doc, index) in documentos"
+    <div v-for="(doc, index) in documentos "
       v-bind:item="doc"
       v-bind:index="index"
       v-bind:key="doc.id"
       :doc="doc"
-      style="padding: 20px"
-    >
+      style="padding: 40px">
       <DocCard :doc="doc" />
     </div>
   </div>

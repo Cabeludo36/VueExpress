@@ -1,9 +1,9 @@
 <template>
-  <div id="DocNovoView">
+  <div id="DocNovoView" class="container p-5 text-white text-center">
     <div>
-      <h1>Novo Documento</h1>
+      <h1 style="float:center;">New Document</h1>
     </div>
-    <div>
+    <div class="container p-5 text-white text-left">
       <form @submit.prevent="submit">
         <div class="form-group">
           <label for="nome">Nome</label>

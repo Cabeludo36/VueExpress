@@ -1,7 +1,8 @@
 <template>
-    teste {{id}}
-    <textarea @input="mandarBrodcast" v-model="documento.texto" name="teste" id="breno" cols="30" rows="10"></textarea>
-    <h1>oi</h1>
+<div class="container p-5 bg-gradient-dark text-light text-left">
+  <h2>Document</h2>
+    <textarea  @input="mandarBrodcast" v-model="documento.texto" name="teste" id="breno" style="width:100%;height:1000px" placeholder="Enter a text message..."></textarea>
+    </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
