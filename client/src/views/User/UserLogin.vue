@@ -1,5 +1,5 @@
 <template>
-  <div id="UserCreate">
+  <div id="UserCreate" class="container p-5 text-white text-center">
     <form action="get">
       <div class="form-group">
         <label for="email">Email</label>

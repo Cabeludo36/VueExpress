@@ -1,15 +1,25 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/users">Users</router-link> | 
+   <ul class="nav nav-tabs">
+  <li class="nav-item">
+<router-link to="/" style="float: left;">Home</router-link>
+  </li>
+  <li class="nav-item">
+    <router-link to="/about">About</router-link>
+  </li>
+  <li class="nav-item">
+    <router-link to="/users">Users</router-link>  
+  </li>
+  <li class="nav-item">
     <router-link to="/docs">Documents</router-link>
-    <div v-if="!temUser()" style="float: right;">
-      <router-link :to="{name: 'Create User'}">Logon</router-link> |
-      <router-link :to="{name: 'Login User'}">Login</router-link>
+  </li>
+</ul>
+  <div v-if="!temUser()" style="float: right;">
+      <router-link :to="{name: 'Create User'}">Logon |</router-link>
+      <router-link :to="{name: 'Login User'}"> Login</router-link>
     </div>
     <div v-else style="float: right;">
-      <button type="button" class="btn btn-secondary" @click="logout">Logout</button>
+      <button type="button" class="btn btn-black" @click="logout">Logout</button>
     </div>
   </nav>
   <router-view/>
@@ -40,24 +50,32 @@ export default defineComponent({
 });
 </script>
 <style>
+
+body {
+  background-color: #c2fbfe;
+}
+
+nav{
+    background-color: #000000;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #000000;
 }
 
 nav {
-  padding: 30px;
+  padding: 20px;
   text-align: center;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #ffffff;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #c2fbfe;
 }
 </style>

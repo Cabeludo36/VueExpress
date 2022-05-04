@@ -2,7 +2,6 @@
   <div id="HomeView">
     <img alt="Vue logo" src="../assets/logo.png">
     <br>
-    <input type="text" v-model="msg" style="width: 267px;">
     <HelloWorld :msg="msg"/>
   </div>
 </template>
@@ -23,6 +22,12 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+input{
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 4px;
+}
+
 #HomeView {
   text-align: center;
   padding: 40px;
