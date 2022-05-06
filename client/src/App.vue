@@ -75,7 +75,19 @@ nav a {
   color: #ffffff;
 }
 
+nav a:hover {
+  color: #000000;
+}
+
 nav a.router-link-exact-active {
-  color: #c2fbfe;
+  color: #3cdd6c;
+}
+
+nav a.router-link-exact-active:focus {
+  color: #000000;
+}
+
+nav a.router-link-exact-active:hover {
+  color: #000000;
 }
 </style>

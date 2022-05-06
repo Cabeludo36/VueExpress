@@ -1,6 +1,6 @@
 <template>
 <div class="container p-5 bg-gradient-dark text-light text-left">
-  <h2>Document</h2>
+  <h2>{{documento.name}}</h2>
     <textarea  @input="mandarBrodcast" v-model="documento.texto" name="teste" id="breno" style="width:100%;height:1000px" placeholder="Enter a text message..."></textarea>
     </div>
 </template>

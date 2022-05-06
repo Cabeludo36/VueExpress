@@ -8,7 +8,7 @@
       <div v-for="(user, index) in users"
       v-bind:item="user"
       v-bind:index="index"
-      v-bind:key="user" :user="user" style="padding: 20px;">
+      v-bind:key="user" :user="user" style="padding: 20px; width: 200px;">
       <UserCard :user="user" />
       <router-link 
       :to="{name:'User', params:{id:user.id}}">
@@ -48,6 +48,6 @@ export default defineComponent({
 <style scoped>
   #UsersView {
     text-align: center;
-    padding: 40px;
+    padding: 20px;
   }
 </style>
