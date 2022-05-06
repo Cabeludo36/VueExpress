@@ -12,7 +12,7 @@
       <UserCard :user="user" />
       <router-link 
       :to="{name:'User', params:{id:user.id}}">
-        <a class="btn btn-primary">Perfil</a>
+        <a class="btn btn-primary">Profile</a>
       </router-link>
       </div>
     </div>

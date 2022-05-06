@@ -1,9 +1,10 @@
 <template>
-  <div id="DocsView" style="padding: 40px">
+  <div id="DocsView" style="padding: 20px">
     <div class="row">
-      <h1 style="float: left;"> Documentos</h1>
+      <h1 style="float: left;"> Documents</h1>
       <router-link class="btn btn-primary" style="float: right;" to="/doc/create">New Document</router-link>
     </div>
+   <div class="Users" style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: flex-start;">
     <div v-for="(doc, index) in documentos "
       v-bind:item="doc"
       v-bind:index="index"
@@ -12,6 +13,7 @@
       style="padding: 40px">
       <DocCard :doc="doc" />
     </div>
+  </div>
   </div>
 </template>
 <script lang="ts">
@@ -46,3 +48,5 @@ export default defineComponent({
   },
 });
 </script>
+
+

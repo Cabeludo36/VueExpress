@@ -1,12 +1,12 @@
 <template>
 
-  <div id="AboutView">
+  <div id="AboutView" style="padding: 20px">
     <div class="row">
       <h1 style="float: left;">About </h1>
     </div>
     <h1> </h1>
-    <h2>Documento de escrita interativa entre clientes</h2>
-    <h3>O documento pode ser escrito por mais de um autor simultaneamente.</h3>
+    <h2>Interactive writing document between clients</h2>
+    <h3>The document can be written by more than one author simultaneously.</h3>
   </div>
 </template>
 <style scoped>

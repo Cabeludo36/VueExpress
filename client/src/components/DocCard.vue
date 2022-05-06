@@ -3,7 +3,7 @@
     <h1>{{ doc.nome }}</h1>
     <p>{{ doc.descricao }}</p>
     <router-link :to="{ name: 'Doc', params: { id: doc.id } }">
-      <a class="btn btn-primary">Ver</a>
+      <a class="btn btn-primary">Edit</a>
     </router-link>
   </div>
 </template>

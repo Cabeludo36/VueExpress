@@ -3,15 +3,15 @@
     <div>
       <h1 style="float:center;">New Document</h1>
     </div>
-    <div class="container p-5 text-white text-left">
+    <div class="container p-5 text-white text-left" >
       <form @submit.prevent="submit">
         <div class="form-group">
-          <label for="nome">Nome</label>
-          <input type="text" class="form-control" id="nome" v-model="titulo" placeholder="Nome do documento">
-          <label for="desc">Descrição</label>
-          <input type="text" class="form-control" id="desc" v-model="descricao" placeholder="Descrição do documento">
+          <label for="nome">Name</label>
+          <input type="text" class="form-control" id="nome" v-model="titulo" placeholder="Document name">
+          <label for="desc">Description</label>
+          <input type="text" class="form-control" id="desc" v-model="descricao" placeholder="Document description">
         </div>
-        <button type="submit" class="btn btn-primary">Criar</button>
+        <button type="submit" class="btn btn-primary">Create</button>
       </form>
     </div>
   </div>

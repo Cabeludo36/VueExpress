@@ -52,7 +52,7 @@ export default defineComponent({
 <style>
 
 body {
-  background-color: #c2fbfe;
+  background-color: #aee6b6;
 }
 
 nav{
@@ -76,7 +76,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #000000;
+  color: #3cdd6c;
 }
 
 nav a.router-link-exact-active {
@@ -84,10 +84,7 @@ nav a.router-link-exact-active {
 }
 
 nav a.router-link-exact-active:focus {
-  color: #000000;
+  color: #3cdd6c;
 }
 
-nav a.router-link-exact-active:hover {
-  color: #000000;
-}
 </style>
