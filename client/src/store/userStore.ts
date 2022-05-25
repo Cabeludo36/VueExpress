@@ -48,7 +48,7 @@ export const userStore = createStore({
       this.state.user.email = '';
       this.state.user.name = '';
       router.push('/');
-    }
+    },
   },
   modules: {
   }

@@ -57,9 +57,9 @@ export default defineComponent({
         this.socket = state.state.socket;
     },
     beforeRouteEnter(to, from, next) {
-    if (userStore.state.user.name == "" || userStore.state.user.name == null)
-      router.push("/users/login");
-    next();
+        if (userStore.state.user.name == "" || userStore.state.user.name == null)
+            router.push("/users/login");
+        next();
     },
     beforeRouteLeave(to, from, next) {
         this.socket.emit('sairRoom', this.$route.params.id);

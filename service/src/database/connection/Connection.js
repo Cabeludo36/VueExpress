@@ -36,12 +36,35 @@ async function createDataBase() {
             updated_at DATETIME NULL,
             deleted_at DATETIME NULL
         )`);
+        db.run(`CREATE TABLE IF NOT EXISTS rooms (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            description TEXT NOT NULL,
+            user_id INTEGER NOT NULL,
+            active BOOLEAN NOT NULL,
+            created_at DATETIME NOT NULL,
+            updated_at DATETIME NULL,
+            deleted_at DATETIME NULL,
+
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        )`);
+        db.run(`CREATE TABLE IF NOT EXISTS msg (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            room_id INTEGER NOT NULL,
+            user_id INTEGER NOT NULL,
+            content TEXT NOT NULL,
+            created_at DATETIME NOT NULL,
+            active BOOLEAN NOT NULL,
+
+            FOREIGN KEY (room_id) REFERENCES rooms(id),
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )`);
     });
     db.close();
 }
 exports.createDataBase = createDataBase;
 async function getTables() {
-    let query = `SELECT name FROM sqlite_master WHERE type='table'`;
+    let query = 'SELECT * FROM rooms'; //`SELECT name FROM sqlite_master WHERE type='table'`;
     return await dbQuery(query);
 }
 exports.getTables = getTables;

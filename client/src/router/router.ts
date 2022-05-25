@@ -39,6 +39,21 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/Documentos/DocNovoView.vue'),
   },
   {
+    path: '/chats',
+    name: 'Chats',
+    component: () => import('../views/chats/ChatsView.vue'),
+  },
+  {
+    path: '/chats/create',
+    name: 'Chat Create',
+    component: () => import('../views/chats/ChatCreateView.vue'),
+  },
+  {
+    path: '/chats/:id',
+    name: 'Chat',
+    component: () => import('../views/chats/ChatView.vue'),
+  },
+  {
     path: '/docs',
     name: 'Docs',
     component: () => import('../views/Documentos/DocsView.vue'),

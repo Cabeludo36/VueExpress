@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.roomRouter = void 0;
+const RoomBL_1 = require("../../logic/RoomBL");
+const express_1 = require("express");
+exports.roomRouter = (0, express_1.Router)();
+exports.roomRouter.get('/getRooms', RoomBL_1.RoomBL.getAll);
+exports.roomRouter.post('/createRoom', RoomBL_1.RoomBL.create);
+exports.roomRouter.patch('/updateRoom/:id', RoomBL_1.RoomBL.update);
+exports.roomRouter.delete('/removeRoom/:id', RoomBL_1.RoomBL.delete);

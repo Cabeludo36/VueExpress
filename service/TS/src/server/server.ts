@@ -3,14 +3,18 @@ import { useRoutes } from './routers/Router';
 import bodyParser from 'body-parser';
 import { Socket } from 'socket.io';
 import { results } from '../util/util';
-import { createDataBase } from '../database/connection/Connection';
+import { createDataBase, getTables } from '../database/connection/Connection';
+import MsgModel from '../models/MgsModel';
+import { MsgBL } from '../logic/MsgBL';
 
 
 let defaultTeste = '/api/v1/docs/getDocs';
 const PORT = process.env.PORT || 5000;
 
 createDataBase();
-
+getTables().then((rows) => {
+    console.log(rows)
+})
 const app = express();
 app.use(bodyParser.json());
 useRoutes(app);
@@ -64,5 +68,9 @@ io.on('connection', (socket:Socket) => {
         socket.broadcast.to(geralDocID).emit('mandarTextoServer', texto);
     });
 
-
+    // chat
+    socket.on('sendMsg', (msg:MsgModel) => {
+        MsgBL.saveMsg(msg);
+        io.to(geralDocID).emit('receveMsg', msg)
+    });
 });

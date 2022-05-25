@@ -13,6 +13,9 @@
   <li class="nav-item">
     <router-link to="/docs">Documents</router-link>
   </li>
+  <li class="nav-item">
+    <router-link to="/chats">Chats</router-link>
+  </li>
 </ul>
   <div v-if="!temUser()" style="float: right;">
       <router-link :to="{name: 'Create User'}">Logon |</router-link>
