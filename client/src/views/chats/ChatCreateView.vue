@@ -3,11 +3,11 @@
         <div class="row">
             <div style="float: left;"><h1>Create Chat</h1></div>
         </div>
-        <form @submit.prevent="submit()">
-            <input type="text" v-model="name" placeholder="Titulo">
-            <input type="text" v-model="descricao" placeholder="Descricão">
+        <form @submit.prevent="submit()" style="display: flex; flex-direction: column; align-content: space-around;">
+            <input type="text" v-model="name" placeholder="Titulo" style="width: 30%; margin-top: 3px;">
+            <input type="text" v-model="descricao" placeholder="Descricão" style="width: 30%; margin-top: 3px;">
 
-            <button type="submit" class="btn btn-info">Create</button>
+            <button type="submit" class="btn btn-info" style="width: fit-content; margin-top: 5px;">Create</button>
         </form>
     </div>
 </template>

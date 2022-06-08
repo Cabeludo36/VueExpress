@@ -1,9 +1,9 @@
 <template>
     <div id="chatView">
-        <div style="width: 90%; background-color: violet;">
-            <div v-for="(msg,index) in msgs" :key="index" style="background-color: aqua; max-width: 80%; display: list-item;">
-                <p v-if="msg.user_id == user.id" style="float: right; background-color: forestgreen;">{{msg.content}}</p>
-                <p v-else style="float: left; background-color: darkgrey;">{{msg.content}}</p>
+        <div style="width: 90%; background-color: white; display: flex; flex-direction: column; padding: 5px;">
+            <div v-for="(msg,index) in msgs" :key="index">
+                <p v-if="msg.user_id == user.id && msg.content !== ''" style="float: right; background-color: forestgreen; margin-right: 2%; padding: 5px; border-radius: 5px;">{{msg.content}}</p>
+                <p v-else-if="msg.content !== ''" style="float: left; background-color: darkgrey; margin-left: 2%; padding: 5px; border-radius: 5px;">{{msg.content}}</p>
             </div>
         </div>
         <form @submit.prevent="sendMsg()" class="fixed-bottom">
@@ -33,6 +33,16 @@ export default defineComponent({
             msgs: [{}] as msg[],
         }
     },
+    async created() {
+        state.dispatch('criaSocket');
+
+        this.id = state.state.socket.id;
+        this.socket = state.state.socket;
+
+        this.msgs = await MsgService.getMsgs(Number(this.$route.params.id))
+
+        this.getRealtimeData();
+    },
     methods: {
         sendMsg() {
             this.socket.emit('sendMsg', {
@@ -44,34 +54,24 @@ export default defineComponent({
             this.$forceUpdate();
         },
         getRealtimeData() {
-            this.socket.on('receveMsg', (msg:msg) => {
+            this.socket.on('receberMsg', (msg:msg) => {
                 console.log('recebi: ' + msg.content )
                 MsgService.getMsgs(Number(this.$route.params.id)).then((msgs:msg[]) => {
                     this.msgs = msgs;
                     this.$forceUpdate();
                 });
                 this.$forceUpdate();
-
             });
         }
     },
-    created() {
-        state.dispatch('criaSocket');
-
+    updated() {
         this.id = state.state.socket.id;
         this.socket = state.state.socket;
 
         MsgService.getMsgs(Number(this.$route.params.id)).then((msgs:msg[]) => {
             this.msgs = msgs
-            this.$forceUpdate()
             this.$forceUpdate();
         });
-
-        this.getRealtimeData();
-    },
-    updated() {
-        this.id = state.state.socket.id;
-        this.socket = state.state.socket;
     },
     beforeRouteEnter (to, from, next) {
         if (userStore.state.user.name == "" || userStore.state.user.name == null)

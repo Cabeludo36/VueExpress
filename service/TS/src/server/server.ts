@@ -70,7 +70,8 @@ io.on('connection', (socket:Socket) => {
 
     // chat
     socket.on('sendMsg', (msg:MsgModel) => {
+        console.log(msg);
         MsgBL.saveMsg(msg);
-        io.to(geralDocID).emit('receveMsg', msg)
+        io.to(geralDocID).emit('receberMsg', msg)
     });
 });

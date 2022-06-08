@@ -60,7 +60,8 @@ io.on('connection', (socket) => {
     });
     // chat
     socket.on('sendMsg', (msg) => {
+        console.log(msg);
         MsgBL_1.MsgBL.saveMsg(msg);
-        io.to(geralDocID).emit('receveMsg', msg);
+        io.to(geralDocID).emit('receberMsg', msg);
     });
 });
